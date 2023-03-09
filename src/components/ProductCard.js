@@ -1,7 +1,11 @@
 import React from 'react';
 import { BiListPlus } from "react-icons/bi";
+import { useDispatch } from 'react-redux';
+import { addToCard, addToWishlist } from '../Redux/ActionCreators';
 
 const ProductCard = ({ product }) => {
+    const dispatch = useDispatch();
+    const location = window.location.pathname
     return (
         <div className='shadow-lg rounded-3xl border p-3 flex flex-col text-indigo-900'>
             <div className='h-52 w-52 mx-auto'>
@@ -19,8 +23,18 @@ const ProductCard = ({ product }) => {
                 </ul>
             </div>
             <div className='flex gap-2 mt-5'>
-                <button className='bg-indigo-500 rounded-full flex-1 py-1 px-2 text-white font-bold'>Add to card</button>
-                <button title='Add to wishlist' className='bg-indigo-500 py-1 px-2 rounded-full'><BiListPlus className='text-white'></BiListPlus></button>
+                {
+                    location === '/card' ? <button className='bg-indigo-500 rounded-full flex-1 py-1 px-2 text-white font-bold'
+                        onClick={() => dispatch(addToCard(product))}
+                    >Remove from card
+                    </button> : <button className='bg-indigo-500 rounded-full flex-1 py-1 px-2 text-white font-bold'
+                        onClick={() => dispatch(addToCard(product))}
+                    >Add to card
+                    </button>
+                }
+                <button title='Add to wishlist' className='bg-indigo-500 py-1 px-2 rounded-full'
+                    onClick={() => dispatch(addToWishlist(product))}
+                ><BiListPlus className='text-white'></BiListPlus></button>
             </div>
         </div>
     );
