@@ -5,7 +5,6 @@ import { TOOGLE_STOCK } from '../Redux/ActionTypes';
 import { toggleBrand } from '../Redux/filterAction';
 
 const Home = () => {
-
     const [products, setProducts] = useState([])
     const state = useSelector((state) => state.filter.filters);
     const dispatch = useDispatch();
