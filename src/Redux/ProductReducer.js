@@ -6,7 +6,6 @@ const initialState = {
 }
 export const productReducer = (state = initialState, action) => {
     const selectedProduct = state.card.find(product => product._id === action.payload._id)
-    console.log(selectedProduct)
     switch (action.type) {
         case ADD_TO_CARD:
             if (selectedProduct) {
