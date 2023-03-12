@@ -10,7 +10,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const { brands, stock } = state;
     useEffect(() => {
-        fetch("products.json")
+        fetch("https://moon-tech-server-pied.vercel.app/products")
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
