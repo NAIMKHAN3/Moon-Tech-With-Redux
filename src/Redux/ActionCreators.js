@@ -1,4 +1,4 @@
-import { ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD } from "./ActionTypes"
+import { ADD_PRODUCT, ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD } from "./ActionTypes"
 
 export const addToCard = (product) => {
     return {
@@ -22,6 +22,13 @@ export const addToWishlist = (product) => {
 export const loadProducts = (data) => {
     return {
         type: LOAD_PRODUCTS,
+        payload: data
+    }
+}
+
+export const addProduct = (data) => {
+    return {
+        type: ADD_PRODUCT,
         payload: data
     }
 }

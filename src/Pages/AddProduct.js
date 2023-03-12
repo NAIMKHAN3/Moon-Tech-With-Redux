@@ -1,8 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../Redux/ActionCreators';
+import addProductData from '../Redux/Middleware/addProductData';
 
 const AddProduct = () => {
     const { register, handleSubmit } = useForm();
+    const dispatch = useDispatch();
 
     const submit = (data) => {
         const product = {
@@ -18,7 +22,7 @@ const AddProduct = () => {
             ],
             spec: [],
         };
-
+        dispatch(addProductData(product))
         console.log(product);
     };
 
@@ -52,7 +56,7 @@ const AddProduct = () => {
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='price'>
-                        Image
+                        Price
                     </label>
                     <input type='text' className='border' name='price' id='price' {...register("price")} />
                 </div>
