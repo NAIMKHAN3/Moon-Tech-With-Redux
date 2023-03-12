@@ -23,7 +23,6 @@ const AddProduct = () => {
             spec: [],
         };
         dispatch(addProductData(product))
-        console.log(product);
     };
 
     return (

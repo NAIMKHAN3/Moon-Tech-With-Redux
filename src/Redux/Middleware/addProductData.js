@@ -2,7 +2,7 @@ import { addProduct } from "../ActionCreators"
 
 const addProductData = (product) => {
     return async (dispatch, getState) => {
-        const res = await fetch("http://localhost:5000/addproduct", {
+        const res = await fetch("https://moon-tech-server-pied.vercel.app/addproduct", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -16,7 +16,6 @@ const addProductData = (product) => {
                 ...product,
             }))
         }
-        console.log(data)
     }
 }
 

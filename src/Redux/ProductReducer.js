@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD } from "./ActionTypes";
+import { ADD_PRODUCT, ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD, REMOVE_PRODUCT } from "./ActionTypes";
 
 const initialState = {
     card: [],
@@ -48,6 +48,11 @@ export const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: [...state.products, action.payload]
+            }
+        case REMOVE_PRODUCT:
+            return {
+                ...state,
+                products: state.products.filter(product => product._id !== action.payload)
             }
         default:
             return state;
