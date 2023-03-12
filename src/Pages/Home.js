@@ -7,21 +7,14 @@ import fetchProducts from '../Redux/FetchProducts';
 import { toggleBrand } from '../Redux/filterAction';
 
 const Home = () => {
-    // const [products, setProducts] = useState([])
     const filter = useSelector((state) => state.filter.filters);
     const products = useSelector((state) => state.product.products);
     const dispatch = useDispatch();
     const { brands, stock } = filter;
     useEffect(() => {
-        // fetch("https://moon-tech-server-pied.vercel.app/products")
-        //     .then(res => res.json())
-        //     .then(data => setProducts(data))
         dispatch(fetchProducts())
-    }, [])
+    }, [dispatch])
 
-    if (products === undefined) {
-        return
-    }
 
     const activeClass = 'bg-indigo-500 text-white border-white';
     let content;

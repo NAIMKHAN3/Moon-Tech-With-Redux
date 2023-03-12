@@ -3,6 +3,7 @@ import { ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD } from ".
 const initialState = {
     card: [],
     wishlist: [],
+    products: []
 }
 export const productReducer = (state = initialState, action) => {
     const selectedProduct = state.card.find(product => product._id === action.payload._id)
