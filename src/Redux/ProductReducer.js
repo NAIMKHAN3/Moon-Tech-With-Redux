@@ -1,4 +1,4 @@
-import { ADD_TO_CARD, ADD_TO_WISHLIST, REMOVE_FROM_CARD } from "./ActionTypes";
+import { ADD_TO_CARD, ADD_TO_WISHLIST, LOAD_PRODUCTS, REMOVE_FROM_CARD } from "./ActionTypes";
 
 const initialState = {
     card: [],
@@ -7,6 +7,11 @@ const initialState = {
 export const productReducer = (state = initialState, action) => {
     const selectedProduct = state.card.find(product => product._id === action.payload._id)
     switch (action.type) {
+        case LOAD_PRODUCTS:
+            return {
+                ...state,
+                products: action.payload
+            }
         case ADD_TO_CARD:
             if (selectedProduct) {
                 selectedProduct.quantity = selectedProduct.quantity + 1

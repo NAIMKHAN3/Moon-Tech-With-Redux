@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../components/ProductCard';
+import { loadProducts } from '../Redux/ActionCreators';
 import { TOOGLE_STOCK } from '../Redux/ActionTypes';
+import fetchProducts from '../Redux/FetchProducts';
 import { toggleBrand } from '../Redux/filterAction';
 
 const Home = () => {
-    const [products, setProducts] = useState([])
-    const state = useSelector((state) => state.filter.filters);
+    // const [products, setProducts] = useState([])
+    const filter = useSelector((state) => state.filter.filters);
+    const products = useSelector((state) => state.product.products);
     const dispatch = useDispatch();
-    const { brands, stock } = state;
+    const { brands, stock } = filter;
     useEffect(() => {
-        fetch("https://moon-tech-server-pied.vercel.app/products")
-            .then(res => res.json())
-            .then(data => setProducts(data))
+        // fetch("https://moon-tech-server-pied.vercel.app/products")
+        //     .then(res => res.json())
+        //     .then(data => setProducts(data))
+        dispatch(fetchProducts())
     }, [])
 
-    const activeClass = 'bg-indigo-500 text-white border-white';
+    if (products === undefined) {
+        return
+    }
 
+    const activeClass = 'bg-indigo-500 text-white border-white';
     let content;
     if (products.length) {
         content = products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
